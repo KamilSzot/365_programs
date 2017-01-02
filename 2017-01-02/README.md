@@ -1,7 +1,7 @@
 
 Url
 ===
-[Live Demo](https://cdn.rawgit.com/KamilSzot/365_programs/tree/master/2017-01-02/)
+[Live Demo](https://cdn.rawgit.com/KamilSzot/365_programs/master/2017-01-02/)
 
 References
 ==========
