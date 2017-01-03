@@ -3,16 +3,74 @@
         <style>
             #image {
                 background: url(./atlas-0.png);
-                background-position: -1402px -6px;
-                width: 164px;
-                height: 180px;
-
-                transform: matrix(0.5, 1, -1, 0.5, 0, 0);
+                background-position: -503px -366px;
+                width: 104px;
+                height: 88px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+            }
+            #grid {
+                display: inline-flex;
+                flex-direction: column;
+            }
+            #grid .row {
+                display: inline-flex;
+                justify-content: space-between;                
+            }
+            td {
+                text-align: right;
             }
         </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
     </head>
     <body>
-        <div id='image'></div>
+        <div id="app">
+            <div id="image" v-bind:style="'transform: matrix('+lt+', '+rt+', '+lb+', '+rb+', 0, 0);'"></div>
+
+
+            <table border="1">
+                <tr>
+                    <td>{{lt}}</td>
+                    <td>{{rt}}</td>
+                </tr>
+                <tr>
+                    <td>{{lb}}</td>
+                    <td>{{rb}}</td>
+                </tr>
+            </table>
+
+            <br>
+
+            <div class="grid">
+                <div class="row">
+                    <input type="range" v-model="lt" min="-1" value="0.5" max="1" step="0.1">
+                    <input type="range" v-model="rt" min="-1" value="1" max="1" step="0.1">
+                </div>
+                <div class="row">
+                    <input type="range" v-model="lb" min="-1" value="-1" max="1" step="0.1">
+                    <input type="range" v-model="rb" min="-1" value="0.5" max="1" step="0.1">
+                </div>
+            </div>
+        </div>
+        <script>
+        var data = {
+            lt: 1,
+            rt: 0,
+            lb: 0,
+            rb: 1
+        };
+        var vm = new Vue({
+            el:'#app',
+            data: data,
+            created: function () {
+                console.log("vue created");
+            },
+            mounted: function () {
+                console.log("mounted");
+            }
+        });
+        </script>
     </body>
 </html>
 
