@@ -26,17 +26,17 @@
     </head>
     <body>
         <div id="app">
-            <div id="image" v-bind:style="'transform: matrix('+lt+', '+rt+', '+lb+', '+rb+', 0, 0);'"></div>
+            <div id="image" v-bind:style="'transform: matrix('+matrix[0][0]+', '+matrix[0][1]+', '+matrix[1][0]+', '+matrix[1][1]+', 0, 0);'"></div>
 
 
             <table border="1">
                 <tr>
-                    <td>{{lt}}</td>
-                    <td>{{rt}}</td>
+                    <td>{{matrix[0][0]}}</td>
+                    <td>{{matrix[0][1]}}</td>
                 </tr>
                 <tr>
-                    <td>{{lb}}</td>
-                    <td>{{rb}}</td>
+                    <td>{{matrix[1][0]}}</td>
+                    <td>{{matrix[1][1]}}</td>
                 </tr>
             </table>
 
@@ -44,25 +44,91 @@
 
             <div class="grid">
                 <div class="row">
-                    <input type="range" v-model="lt" min="-1" value="0.5" max="1" step="0.1">
-                    <input type="range" v-model="rt" min="-1" value="1" max="1" step="0.1">
+                    <input type="range" v-model="matrix[0][0]" min="-1" max="1" step="0.1">
+                    <input type="range" v-model="matrix[0][1]" min="-1" max="1" step="0.1">
                 </div>
                 <div class="row">
-                    <input type="range" v-model="lb" min="-1" value="-1" max="1" step="0.1">
-                    <input type="range" v-model="rb" min="-1" value="0.5" max="1" step="0.1">
+                    <input type="range" v-model="matrix[1][0]" min="-1" max="1" step="0.1">
+                    <input type="range" v-model="matrix[1][1]" min="-1" max="1" step="0.1">
                 </div>
             </div>
+
+            <div class="grid">
+                <div class="row">
+                    <input type="range" v-model="scale[0]" min="-1" max="1" step="0.1"> scale x = {{scale[0]}}
+                </div>
+                <div class="row">
+                    <input type="range" v-model="scale[1]" min="-1" max="1" step="0.1"> scale y = {{scale[1]}}
+                </div>
+                <div class="rotate">
+                    <input type="range" v-model="rotate" min="-3.14" max="3.14" step="0.01"> rotate = {{rotate}}
+                </div>
+                <div class="row">
+                    <input type="range" v-model="skew[0]" min="-1.57" max="1.57" step="0.1"> skew x = {{skew[0]}}
+                </div>
+                <div class="row">
+                    <input type="range" v-model="skew[1]" min="-1.57" max="1.57" step="0.1"> skew y = {{skew[1]}}
+                </div>
+            </div>
+
+
+
         </div>
         <script>
         var data = {
             lt: 1,
             rt: 0,
             lb: 0,
-            rb: 1
+            rb: 1,
+            rotate: 0,
+            scale: [1, 1],
+            skew: [0, 0]
         };
+        function scale(s) {
+            return [
+                [s[0], 0,    0],
+                [0,    s[1], 0],
+                [0,    0,    1]
+            ]
+        }
+        function skew(s) {
+            return [
+                [1,              Math.tan(s[0]), 0],
+                [Math.tan(s[1]), 1,              0],
+                [0,              0,              1]
+            ]
+        }
+        function rotate(r) {
+            return [
+                [Math.cos(r),   -Math.sin(r),    0],
+                [Math.sin(r),    Math.cos(r),    0],
+                [0,              0,              1]
+            ]
+        }
+        function mul(a, b) {
+            var size = a.length;
+            var result = [];
+            for(var i = 0; i < size; i++) {
+                var row = [];
+                for(var j = 0; j < size; j++) {
+                    var value = 0;
+                    for(var k = 0; k < size; k++) {
+                        value += a[i][k] * b[k][j];
+                    }
+                    row.push(value);
+                }
+                result.push(row);
+            }
+            return result;
+        }
         var vm = new Vue({
             el:'#app',
             data: data,
+            computed: {
+                matrix: function() {
+                    return mul(mul(skew(this.skew), scale(this.scale)), rotate(this.rotate));
+                },               
+            },
             created: function () {
                 console.log("vue created");
             },
