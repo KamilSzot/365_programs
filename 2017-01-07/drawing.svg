@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="600"
@@ -17,7 +18,31 @@
    inkscape:version="0.92.0 r15299"
    sodipodi:docname="drawing.svg">
   <defs
-     id="defs2" />
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="insidesGradient">
+      <stop
+         style="stop-color:#ffb380;stop-opacity:0.12562814"
+         offset="0"
+         id="stop4650" />
+      <stop
+         style="stop-color:#ffb380;stop-opacity:0.99497485"
+         offset="1"
+         id="stop4652" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#insidesGradient"
+       id="radialGradient4660"
+       cx="76.344177"
+       cy="278.64893"
+       fx="76.344177"
+       fy="278.64893"
+       r="76.344177"
+       gradientTransform="matrix(1,0,0,0.24037296,0,211.66926)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -58,9 +83,10 @@
      transform="translate(0,-257.31249)">
     <path
        inkscape:connector-curvature="0"
-       style="fill:#ffb380;stroke-width:0.26458332"
+       style="fill:url(#radialGradient4660);stroke-width:0.26458332;fill-opacity:1;fill-rule:nonzero"
        d="m 78.270674,260.29785 a 54.14042,18.350967 0 0 0 -35.2826,4.46123 H 1e-7 v 26.36066 H 38.617282 A 54.14042,18.350967 0 0 0 78.270674,297 54.14042,18.350967 0 0 0 117.89719,291.11974 h 34.79116 v -26.36066 h -39.07824 a 54.14042,18.350967 0 0 0 -35.339436,-4.46123 z"
-       id="path3680-3" />
+       id="path3680-3"
+       inkscape:label="insides" />
     <path
        style="stroke-width:0.26458332"
        d="m 78.270672,260.29785 a 54.140419,18.350967 0 0 0 -35.282599,4.46123 H 0 v 26.36066 H 38.61728 A 54.140419,18.350967 0 0 0 78.270672,297 54.140419,18.350967 0 0 0 117.89719,291.11974 h 34.79116 v -26.36066 h -39.07824 a 54.140419,18.350967 0 0 0 -35.339438,-4.46123 z m 1.115179,2.43344 a 40.047687,15.816302 0 0 1 30.687529,5.67769 h 39.97895 v 18.85777 h -37.28558 a 40.047687,15.816302 0 0 1 -33.380899,7.09724 40.047687,15.816302 0 0 1 -33.384526,-7.09724 H 3.4473348 V 268.40898 H 48.658011 a 40.047687,15.816302 0 0 1 30.72784,-5.67769 z"
