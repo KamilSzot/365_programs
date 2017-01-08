@@ -1,0 +1,57 @@
+.wh(@x, @y) {
+    width: @x;
+    height: @y;
+}
+.wh(@s) {
+    .wh(@s, @s);
+}
+.xy(@x, @y) {
+    position: absolute;
+    top: @y;
+    left: @x;
+}
+.xy(@p) {
+    .xy(@p, @p);
+}
+.bg(@c) {
+    background-color: @c;
+}
+
+#hip {
+    .wh(20px);
+    .xy(50%);
+    .bg(black);
+}
+#thigh-origin {
+    .wh(0);
+    .xy(0);    
+    animation: anim;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+#thigh {
+    .wh(20px, 100px);
+    .xy(0);
+    .bg(blue);
+}
+#calf-origin {
+    .wh(0);
+    .xy(100%);        
+    transform: rotate(45deg);
+    animation: anim;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+#calf {
+    .xy(-16px, 0);
+    .wh(16px, 80px);
+    .bg(green);
+}
+
+@keyframes anim {
+    0% { transform: rotate(-45deg); }
+    50% { transform: rotate(45deg); }
+    100% { transform: rotate(-45deg); }
+}
