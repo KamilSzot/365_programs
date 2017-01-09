@@ -16,33 +16,34 @@
 .bg(@c) {
     background-color: @c;
 }
-
+.animate(@kfs, @offset: 0, @duration: 2s) {
+    animation: @kfs;
+    animation-duration: @duration;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-delay: -@duration * @offset;
+}
 #hip {
     .wh(20px);
     .xy(50%);
     .bg(black);
+    .animate(hip-anim, 0.5, 1s);
 }
 #thigh-origin {
     .wh(0);
-    .xy(0);    
-    animation: anim;
-    animation-duration: .5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    .xy(20px,0);    
+    .animate(thigh-anim);
 }
 #thigh {
     .wh(20px, 100px);
-    .xy(0);
+    .xy(-20px,0);
     .bg(blue);
 }
 #calf-origin {
     .wh(0);
     .xy(100%);        
     transform: rotate(45deg);
-    animation: anim;
-    animation-duration: .5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    .animate(calf-anim, 0.75);
 }
 #calf {
     .xy(-16px, 0);
@@ -50,8 +51,44 @@
     .bg(green);
 }
 
-@keyframes anim {
-    0% { transform: rotate(-45deg); }
-    50% { transform: rotate(45deg); }
-    100% { transform: rotate(-45deg); }
+#lthigh-origin {
+    .wh(0);
+    .xy(20px,0);    
+    .animate(thigh-anim, 0.5);
+    
 }
+#lthigh {
+    .wh(20px, 100px);
+    .xy(-20px,0);
+    .bg(blue);
+}
+#lcalf-origin {
+    .wh(0);
+    .xy(100%);        
+    transform: rotate(45deg);
+    .animate(calf-anim, 1.25);
+}
+#lcalf {
+    .xy(-16px, 0);
+    .wh(16px, 80px);
+    .bg(darken(green, 10%));
+}
+
+@keyframes thigh-anim {
+    0% { transform: rotate(-60deg); }
+    50% { transform: rotate(45deg); }
+    100% { transform: rotate(-60deg); }
+}
+
+@keyframes calf-anim {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(120deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes hip-anim {
+    0% { transform: translateY(40px) rotate(0deg); }
+    50% { transform: translateY(0px) rotate(-10deg); }
+    100% { transform: translateY(40px) rotate(0deg); }
+}
+
