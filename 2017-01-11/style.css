@@ -1,0 +1,9 @@
+#spot {
+    fill: #888;
+    z-index: 2;
+}
+
+#line {
+    stroke-width: 3px;
+    stroke: black;
+}
