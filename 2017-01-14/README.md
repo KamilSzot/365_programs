@@ -5,5 +5,5 @@ Links
 Commands
 ========
 
-    nim c -r hello.nim
+    nim c --opt:speed -r hello.nim
     
