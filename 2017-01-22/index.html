@@ -1,0 +1,42 @@
+<html>
+    <head>
+            <style>
+                #ball { 
+                    width: 20px; 
+                    height: 20px;
+                    position: absolute;
+                    background-color: black;
+                }
+            </style>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var ball = document.getElementById('ball');
+                    var x = (window.innerWidth - 20)/ 2;
+                    var y = (window.innerHeight - 20)/ 2;
+                    var vx = Math.random()*10-5;
+                    var vy = Math.random()*10-5;
+                    (function frame() {
+                        if(vx + x+20 > window.innerWidth || vx + x < 0) {
+                            vx = -vx;
+                        }
+                        if(vy + y+20 > window.innerHeight || vy + y < 0) {
+                            vy = -vy;
+                        }
+
+                        x += vx;
+                        y += vy;
+
+
+                        ball.style.left = x;
+                        ball.style.top = y;
+
+                        requestAnimationFrame(frame);
+                    })();
+                });
+            </script>
+    </head>
+
+    <body>
+        <div id="ball"></div>
+    </body>
+</html>
