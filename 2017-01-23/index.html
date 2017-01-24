@@ -93,9 +93,12 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var now = new Date();
-                document.getElementById('hour-hand-initial').style.transform = 'rotate('+360*(now.getHours()/12)+'deg)';
-                document.getElementById('minute-hand-initial').style.transform = 'rotate('+360*(now.getMinutes()/60)+'deg)';
-                document.getElementById('second-hand-initial').style.transform = 'rotate('+360*((now.getSeconds()+now.getMilliseconds()/1000)/60)+'deg)';                
+                var s = now.getSeconds()+now.getMilliseconds()/1000;
+                var m = now.getMinutes()+s/60;
+                var h = now.getHours()+m/60;
+                document.getElementById('hour-hand-initial').style.transform = 'rotate('+360*(h/12)+'deg)';
+                document.getElementById('minute-hand-initial').style.transform = 'rotate('+360*(m/60)+'deg)';
+                document.getElementById('second-hand-initial').style.transform = 'rotate('+360*(s/60)+'deg)';                
 
                 var clock = document.getElementById('clock');
                 for(var i = 0; i < 12; i++) {
