@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <style>
+            #player {
+                width: 20px;
+                height: 20px;
+                border-radius: 10px;
+                position: absolute;
+                background: black;
+            }
+        </style>
+        <script>
+            var vstack = ['_'];
+            document.addEventListener('DOMContentLoaded', function() {
+                var player = document.getElementById('player');
+
+                var p = {x: 10, y: 10};
+
+                var d = {
+                    _:  { x: 0, y: 0},
+                    37: { x: -1 },
+                    38: { y: -1 },
+                    39: { x: 1  },
+                    40: { y: 1 }
+                };
+
+
+                document.addEventListener('keydown', function(e) {
+                    var loc = vstack.indexOf(e.keyCode);
+                    if(loc !== -1) {
+                        vstack.splice(loc, 1);
+                    }
+                    vstack.unshift(e.keyCode);
+                });
+
+                document.addEventListener('keyup', function(e) {
+                    var loc = vstack.indexOf(e.keyCode);
+                    if(loc !== -1) {
+                        vstack.splice(loc, 1);
+                    }
+                });
+
+                (function frame() {
+                    var v = d[vstack[0]];
+                    p.x += v.x || 0;
+                    p.y += v.y || 0;
+                    player.style.left = p.x*5+'px';
+                    player.style.top = p.y*5+'px';
+                    requestAnimationFrame(frame);
+                })();
+            });
+        </script>
+    </head>
+    <body>
+        Use keyboard arrows.
+        <div id="player"></div>
+    </body>
+</html>
