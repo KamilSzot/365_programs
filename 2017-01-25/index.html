@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input v-model="values[0]"> - <input v-model="values[1]"><br>
+            <input v-model="values[2]"> - <input v-model="result" disabled> 
+        </div>
+        <script>
+            var data = {
+                values: [1,1,1]
+            };
+        function a(s) {
+            return +s.toString().replace(',', '.');
+        }
+         var vm = new Vue({
+            el:'#app',
+            data: data,
+            computed: {
+                result: function() {
+                    return a(this.values[1]) * a(this.values[2]) / a(this.values[0]);
+                },               
+            },
+            created: function () {
+                console.log("vue created");
+            },
+            mounted: function () {
+                console.log("mounted");
+            }
+        });
+        </script>
+    </bodY>
+</html>
