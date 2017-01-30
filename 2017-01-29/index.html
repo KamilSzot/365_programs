@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+            #display {
+                font-size: 100px;
+                left: 50%;
+                top: 50%;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                text-transform: uppercase;
+            }
+            #score {
+                left: 50%;
+                top: 30%;
+                position: absolute;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+        <script>
+            function ord(s) {
+                return s.charCodeAt(0);
+            }
+            var totalTime = 0;
+            var totalLetters = 0;
+            document.addEventListener('DOMContentLoaded', function() {
+                var display = document.getElementById('display');
+                var score = document.getElementById('score');
+                (function randomLetter() {
+                    var c = String.fromCharCode(Math.random()*(ord('z')-ord('a'))+ord('a'));
+                    display.innerText = c;
+                    score.innerText = !totalLetters ? '???' : Math.round(totalTime/totalLetters);
+                    var time = (new Date()).getTime();
+                    document.onkeypress = function(e) {
+                        if(e.key == ' ') {
+                            totalTime = 0;
+                            totalLetters = 0;
+                            randomLetter();
+                        }
+                        if(e.key == c) {
+                            totalTime += (new Date()).getTime() - time;
+                            totalLetters++;
+                            randomLetter();
+                        }
+                    };
+                })();
+            });
+
+        </script>
+    </head>
+    <body>
+        Press letter keys. Number is average miliseconds between displaying letter and keypress. SPACEBAR resets stats.
+        <div id="score"></div>
+        <div id="display">
+
+        </div>
+    </body>
+</html>
