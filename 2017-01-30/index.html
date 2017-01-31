@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <style>
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var map = document.getElementById('map');
+                var rotation = 0;
+                var x = 1000;
+                var y = 1000;
+                (function frame() {
+                    map.setAttribute('transform', `rotate(${-rotation} 300 150) translate(${-x}, ${-y})`);
+                    rotation += 1;
+                    requestAnimationFrame(frame);
+                })();
+            });
+        </script>
+    </head>
+    <body>
+        <svg id="display" width="600" height="300">
+            <g id="map">
+                <image x="0" y="0" width="10000" xlink:href="Labyrinth_schrg.svg" />
+            </g>
+        </svg>
+    </body>
+</html>
