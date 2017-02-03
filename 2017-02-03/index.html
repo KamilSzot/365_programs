@@ -1,0 +1,51 @@
+<html>
+    <style>
+        body {
+            font-size: 10vh;
+        }
+        .eye, .face, .smile {
+            position: absolute;
+        }
+        .face {
+            width: 6em;
+            height: 6em;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 0.1em solid black;
+            border-radius: 3em;
+        }
+        .eye {
+            top: 30%;
+            width: 10vh;
+            height: 10vh;
+            border: 0.1em solid black;
+            border-radius: 3em;
+            transform: translate(-50%, -50%);
+        }
+        .left {
+            left: 30%;            
+        }
+        .right {
+            left: 70%;            
+        }
+        .smile {
+            left: 50%;
+            top: 70%;
+            width: 3.5em;
+            height: 1.5em;
+            border-radius: 0 0 3em 3em / 0 0 2em 2em;
+            transform: translate(-50%, -50%);
+            border: 0.1em solid black;
+        }
+    </style>
+    <body>
+        <div class="face">
+            <div class="left eye"></div>
+            <div class="right eye"></div>
+            <div class="smile"></div>
+        </div>
+
+    </body>
+
+</html>
