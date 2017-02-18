@@ -1,7 +1,7 @@
 Demo
 ----
 
-[Demo](https://cdn.rawgit.com/KamilSzot/365_programs/tree/master/2017-02-18/dist/)
+[Demo](https://cdn.rawgit.com/KamilSzot/365_programs/master/2017-02-18/dist/)
 
 --- 
 
