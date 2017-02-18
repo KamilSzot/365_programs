@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "blog",
-  "homepage": "https://cdn.rawgit.com/KamilSzot/365_programs/tree/master/2017-02-18/dist/",
+  "homepage": "https://cdn.rawgit.com/KamilSzot/365_programs/master/2017-02-18/dist/",
   "twitter": "",
   "repository": "https://github.com/KamilSzot/365_programs.git",
   "scripts": {
