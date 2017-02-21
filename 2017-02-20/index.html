@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.9/system.js"></script>
+        <script>
+            var process = { env: {} }
+
+            SystemJS.config({
+                // baseURL: 'node_modules', // unfortunately you'll have to use ../ prefix (not ./) to import your application code because of this
+                packageConfigPaths: [
+                    "node_modules/@*/package.json",
+                    "node_modules/*/package.json"
+                ],
+                paths: {
+                },
+                map: { 
+                    'start': './dist/start.js', 
+                    'react': 'node_modules/react',           // or you can explicitly list all of the modules that you use (and some of their deps)
+                    'react-dom': 'node_modules/react-dom',
+                    'fbjs': 'node_modules/fbjs',
+
+                     'object-assign': 'node_modules/object-assign/index.js', // it doesn't have main in package.json so you have to list it here anyways
+                },
+                meta:{ '*': { scriptLoad: false }},
+            });
+            SystemJS.import('start');
+        </script>
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+</html>
