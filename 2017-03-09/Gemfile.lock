@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    curses (1.2.0-x86-mingw32)
+
+PLATFORMS
+  x86-mingw32
+
+DEPENDENCIES
+  curses (= 1.2.0)
+
+BUNDLED WITH
+   1.14.6
