@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <style>
+            div {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                background: black;
+                border: 2px solid white;
+                box-sizing: border-box;
+            }
+            #display, #fps {
+                background: darkblue; 
+                color: yellow;
+                font-size: 20px;
+                display: block;
+                padding: 10px;
+                z-index: 1;
+                position: absolute;
+
+            }
+            #fps {
+                right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <span id="display">0</span>
+        <span id="fps">0</span>
+    </body>
+    <script>
+        var pt = 0;
+        function addBlackSquare() {
+            var n = document.createElement('div');
+            n.style.left = Math.random() * (window.innerWidth - 10);
+            n.style.top = Math.random() * (window.innerHeight - 10);
+            n.style.borderRadius = Math.random()*5+'px';
+            document.body.appendChild(n);
+        }
+        (function next(t) {
+            document.getElementById('fps').innerText = Math.round(1000/(t-pt));
+            pt = t;
+            for(var i = 0; i<100; i++) {
+                addBlackSquare();
+            }
+            document.getElementById('display').innerText = document.body.children.length;
+            requestAnimationFrame(next);
+        })();
+    </script>
+</html>
