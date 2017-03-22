@@ -1,0 +1,7 @@
+[package]
+name = "rnd"
+version = "0.1.0"
+authors = ["Kamil Szot <kamil.szot@gmail.com>"]
+
+[dependencies]
+rand = "0.3.15"
