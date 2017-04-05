@@ -1,0 +1,41 @@
+<html>
+    <head>        
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas width="100%" height="100%" id="scr" />
+    </body>
+    <script>
+        var scr = document.getElementById('scr');
+        var ctx = scr.getContext('2d');
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+
+        var width = scr.offsetWidth;
+        var height = scr.offsetHeight;
+        
+        function tree(x, y, length, angle, steps) {
+            if(steps > 0) {
+                ctx.beginPath();
+                ctx.moveTo(x,y);
+                var dx = x+length*Math.sin(Math.PI*angle/180);
+                var dy = y-length*Math.cos(Math.PI*angle/180);
+                ctx.lineTo(dx, dy);
+                ctx.stroke();
+
+                var n = 3;
+                for(var i=-n;i<=n;i++) {
+                    tree(dx, dy, length*.5, angle + i*15*Math.sqrt(steps), steps-1);
+                }
+                
+            }
+        }
+        tree(width/2, height, height/2, 0, 6);
+        
+    </script>
+</html>
