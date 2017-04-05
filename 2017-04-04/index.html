@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <style>
+            #left, #right {
+                width: 20%;
+                height: 80%;
+                position: absolute;
+                display: none;
+            }
+            #left {
+                background: green;
+                left: 10%;
+                top: 10%;
+            }
+            #right {
+                background: darkred;
+                right: 10%;
+                top: 10%;
+            }
+            .ok {
+                background: lime;   
+                transition: none;             
+            }
+            .error {
+                background: red;   
+                transition: none;             
+            }
+            body {
+                transition: background-color linear .5s;
+            }
+            #score, #high-score {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                font-size: 40px;
+                text-align: center;
+                width: 100px;
+                margin-left: -50px;
+            }
+            #high-score {
+                top: 20px;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="left"></div>
+        <div id="right"></div>
+        <div id="score"></div>
+        <div id="high-score"></div>
+    </body>
+    <script>
+        var rects = [document.getElementById('left'), document.getElementById('right')]
+        var shown;
+        var startDate;
+        var result;
+        var rounds;
+        function reset() {
+            if(rounds>5) {
+                document.getElementById('high-score').innerText = Math.round(result / rounds);
+            }
+            result = 0;
+            rounds = 0;
+            document.getElementById('score').innerText = '';
+        }
+        function nextRound(delay) {
+            delay = delay !== undefined ? delay : Math.floor(Math.random()*1000);
+            for(var r of rects) { r.style.display = 'none' }
+            shown = -1
+            clearTimeout(nextTimeout);
+            nextTimeout = setTimeout(() => {
+                shown = Math.floor(Math.random()*2);
+                rects[shown].style.display = 'block'
+                startDate = new Date();
+            }, delay);
+            
+        }
+        function updateScore() {
+            rounds ++;
+            result += new Date() - startDate;
+            document.getElementById('score').innerText = Math.round(result / rounds);
+        }
+        var nextTimeout;
+        function keyPressed(e) {
+            var picked = { '37': 0, '39': 1 }[e.keyCode];
+            
+            setTimeout(() => document.body.className = '', 0);
+            if(shown == picked) {
+                document.body.className = 'ok';
+                updateScore();
+                nextRound();
+            } else {
+                document.body.className = 'error';
+                reset();                
+                document.body.removeEventListener('keydown', keyPressed);
+            }
+        }
+        document.body.addEventListener('keydown', keyPressed);
+        reset();
+        nextRound();
+    </script>
+</html>
+    
