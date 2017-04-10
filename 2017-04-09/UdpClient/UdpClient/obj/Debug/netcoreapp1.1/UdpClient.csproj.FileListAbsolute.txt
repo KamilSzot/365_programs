@@ -1,0 +1,9 @@
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\bin\Debug\netcoreapp1.1\UdpClient.deps.json
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\bin\Debug\netcoreapp1.1\UdpClient.runtimeconfig.json
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\bin\Debug\netcoreapp1.1\UdpClient.runtimeconfig.dev.json
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\bin\Debug\netcoreapp1.1\UdpClient.dll
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\bin\Debug\netcoreapp1.1\UdpClient.pdb
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\obj\Debug\netcoreapp1.1\UdpClient.csprojResolveAssemblyReference.cache
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\obj\Debug\netcoreapp1.1\UdpClient.AssemblyInfo.cs
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\obj\Debug\netcoreapp1.1\UdpClient.dll
+C:\experiments\365_programs\2017-04-09\UdpClient\UdpClient\obj\Debug\netcoreapp1.1\UdpClient.pdb
