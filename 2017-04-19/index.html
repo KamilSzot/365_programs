@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script>
+            function rnd(w) {
+                return Math.floor(Math.random()*w);
+            }
+            
+            document.addEventListener("DOMContentLoaded", function() {
+                var w = 1024, h = 768;
+                var canvas = document.getElementById('canvas');
+                var scr = canvas.getContext('2d');   
+                scr.fillStyle = '#000'
+                scr.fillRect(0,0,w,h);
+
+                var id, d
+                function putPixel(x,y,i) {
+                    id = id || scr.createImageData(1,1)
+                    d = d || id.data
+                    d[0] = 255
+                    d[1] = i
+                    d[2] = i
+                    d[3] = 255
+                    scr.putImageData(id, x, y)
+                }
+
+                function nextFrame() {
+                    var [x,y] = [rnd(w), rnd(h)];
+                    for(var i = 1; i<100+rnd(500); i++) {
+                        putPixel(x,y,i)
+                        x+=rnd(3)-1;
+                        y+=rnd(3)-1;
+                    }
+                    putPixel(x,y);
+                    requestAnimationFrame(nextFrame)
+                }
+                nextFrame()
+            });
+
+
+        </script>
+        <style>
+            #canvas {
+                margin: auto;
+            }
+        </style>
+
+    </head>
+    <body>
+        <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>
+    
