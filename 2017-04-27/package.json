@@ -1,0 +1,14 @@
+{
+  "name": "2017-04-27",
+  "version": "1.0.0",
+  "description": "",
+  "main": "try.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^0.9.4"
+  }
+}
