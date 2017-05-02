@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
+        <style>
+            #map {
+                width: 1024px;
+                height: 768px;
+            }
+            #iframe {
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="iframe">
+            <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=4.895846843719483%2C52.3791981269288%2C4.9029278755188%2C52.38212881150325&amp;layer=mapnik&amp;marker=52.380661856276966%2C4.899387359619141" style="border: 1px solid black"></iframe><br/><small><a href="http://www.openstreetmap.org/?mlat=52.38066&amp;mlon=4.89939#map=18/52.38066/4.89939">View Larger Map</a></small>
+        </div>
+        <div id="map"></div>
+        <script>
+            var spot = [52.38066, 4.89939];
+            var map = L.map('map', {
+                center: spot,
+                zoom: 18
+            });
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker(spot).addTo(map)
+                .bindPopup('Nice spot.')
+                .openPopup();
+                    
+        </script>
+    </body>
+</html>    
