@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script src="./b4w.min.js"></script>
+    <style>
+        #canvas_cont {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas_cont"></div>
+    <script>
+        var m_app = b4w.require("app");
+        var m_data = b4w.require("data");
+        var m_scs = b4w.require("scenes");
+        var m_phy = b4w.require("physics")
+        function hello() {
+            m_app.init({
+                canvas_container_id: "canvas_cont",
+                callback: load_cb
+            })
+            function load_cb() {
+                m_data.load("3d.json", loaded_cb);
+            }
+            function loaded_cb() {
+//                m_app.enable_camera_controls();
+//                console.log(m_scs.get_all_objects());
+                var box = m_scs.get_object_by_name("Doodad");
+                m_app.enable_object_controls(box);
+                //m_phy.set_gravity(box, 0);
+                //m_phy.enable_simulation(box)
+                
+            }
+        }
+        hello();
+    </script>
+</body>
+
+</html>
