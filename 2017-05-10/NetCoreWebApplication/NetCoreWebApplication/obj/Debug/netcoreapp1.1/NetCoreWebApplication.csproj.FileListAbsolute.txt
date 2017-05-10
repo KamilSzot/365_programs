@@ -1,0 +1,9 @@
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\bin\Debug\netcoreapp1.1\NetCoreWebApplication.deps.json
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\bin\Debug\netcoreapp1.1\NetCoreWebApplication.runtimeconfig.json
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\bin\Debug\netcoreapp1.1\NetCoreWebApplication.runtimeconfig.dev.json
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\bin\Debug\netcoreapp1.1\NetCoreWebApplication.dll
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\bin\Debug\netcoreapp1.1\NetCoreWebApplication.pdb
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\obj\Debug\netcoreapp1.1\NetCoreWebApplication.csprojResolveAssemblyReference.cache
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\obj\Debug\netcoreapp1.1\NetCoreWebApplication.AssemblyInfo.cs
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\obj\Debug\netcoreapp1.1\NetCoreWebApplication.dll
+C:\experiments\365_programs\2017-05-10\NetCoreWebApplication\NetCoreWebApplication\obj\Debug\netcoreapp1.1\NetCoreWebApplication.pdb
