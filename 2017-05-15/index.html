@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <script src="./b4w.min.js"></script>
+    <style>
+        #canvas_cont {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas_cont"></div>
+    <script>
+        var app = b4w.require("app");
+        var data = b4w.require("data");
+        var scs = b4w.require("scenes");
+        var phy = b4w.require("physics");
+        var tra = b4w.require("transform");
+        var inp = b4w.require("input");
+        var ctl = b4w.require("controls");
+        var ani = b4w.require("animation");
+        var mat = b4w.require("material");
+        var rgba = b4w.require("rgba");
+        var box;
+        function hello() {
+            app.init({
+                canvas_container_id: "canvas_cont",
+                callback: load_cb
+            })
+            function load_cb() {
+                data.load("lab.json", loaded_cb);
+            }
+            var x = 1.5, y = 1.5;
+            function loaded_cb() {
+//                app.enable_camera_controls();
+//                console.log(scs.get_all_objects());
+                box = scs.get_object_by_name("Ball");
+//                app.enable_object_controls(box);
+                var key_space = ctl.create_keyboard_sensor(ctl.KEY_SPACE);
+
+                ctl.create_sensor_manifold(box, "JUMP", ctl.CT_TRIGGER,  [key_space], null, function() {tra.set_translation(box, 0,0,0) });
+                var key_w     = ctl.create_keyboard_sensor(ctl.KEY_W);
+                var key_s     = ctl.create_keyboard_sensor(ctl.KEY_S);
+
+                ctl.create_sensor_manifold(box, "FORWARD", ctl.CT_POSITIVE,  [key_w, key_s], (s) => s[0] || s[1], function(obj, id, pulse) {
+                    var v;
+                    if(ctl.get_sensor_value(obj, id, 0)) {
+                        v = 1;
+                    } else {
+                        v = -1;
+                    }
+                    x+=v/10;
+                    y+=v/10;
+
+                    tra.set_translation(box, x,y,0) 
+                });
+
+                var key_a     = ctl.create_keyboard_sensor(ctl.KEY_A);
+                var key_d     = ctl.create_keyboard_sensor(ctl.KEY_D);
+
+                ctl.create_sensor_manifold(box, "LEFT", ctl.CT_POSITIVE,  [key_a, key_d], (s) => s[0] || s[1], function(obj, id, pulse) {
+                    var v;
+                    if(ctl.get_sensor_value(obj, id, 0)) {
+                        v = 1;
+                    } else {
+                        v = -1;
+                    }
+                    x-=v/10;
+                    y+=v/10;
+
+                    tra.set_translation(box, x,y,0) 
+                });
+
+                var ball_shape = scs.get_object_by_name("BallShape");
+                var wall = scs.get_object_by_name("Wall");
+                var col_wall = ctl.create_collision_sensor(ball_shape, "WALL");
+                ctl.create_sensor_manifold(ball_shape, "WALL", ctl.CT_TRIGGER, [col_wall], (s) => s[0], function(obj, id, pulse) {
+                     if(pulse>0) {
+                        mat.set_diffuse_color(ball_shape, "Surface", rgba.from_values(1.0, 0.0, 0.0, 1.0));
+                     } else {
+                        mat.set_diffuse_color(ball_shape, "Surface", rgba.from_values(1.0, 1.0, 0.0, 1.0));
+                     }
+                });
+
+                //ani.play(scs.get_object_by_name("BallGraphics"), function() {});
+                //phy.set_gravity(box, 0);
+                //phy.enable_simulation(box)
+                
+            }
+        }
+        hello();
+    </script>
+</body>
+
+</html>
