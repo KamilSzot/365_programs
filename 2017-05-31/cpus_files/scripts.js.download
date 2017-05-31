@@ -1,0 +1,204 @@
+(function(){
+
+"use strict";
+
+
+/*var image1 = "image1",
+	image1a = "image1a";*/
+
+
+var El = function(e){
+	return document.getElementById(e);
+}
+
+var SEl = function(e){
+	 return document.querySelectorAll(e);
+}
+
+var isIE = function(version) {
+	// Detecting IE
+	if (version == undefined) version == "9";
+	var div = document.createElement("div");
+	div.innerHTML = "<!--[if lt IE "+version+"]><i id='ie-detect'></i><![endif]-->";	
+	return (El("ie-detect").length == 1);
+}
+
+
+// Detecting IE
+var div = document.createElement("div");
+div.innerHTML = "<!--[if lt IE 9]><i></i><![endif]-->";
+var isIeLessThan9 = (div.getElementsByTagName("i").length == 1);
+window.onload = function() {
+  if (Enabler.isInitialized()) {
+      enablerInitHandler();
+  } else {
+      Enabler.addEventListener(studio.events.StudioEvent.INIT,enablerInitHandler);
+  }
+}
+function enablerInitHandler() {
+	if (dynamicContent.Cisco__Sparks_Sheet1[0].Image1Id == 2){
+		document.getElementById("stage").className = "style2";
+
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].Image1Id == 3){
+		document.getElementById("stage").className = "style3";
+
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].Image1Id == 4){
+		document.getElementById("stage").className = "style4";
+
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].Image1Id == 5){
+		document.getElementById("stage").className = "style5";
+
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].Image1Id == 6){
+		document.getElementById("stage").className = "style6";
+
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].Image1Id == 7){
+		document.getElementById("stage").className = "style7";
+
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].Image1Id == 8){
+		document.getElementById("stage").className = "style8";
+
+	} else {
+		document.getElementById("stage").className = "style1";
+	}
+
+	if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFont"){
+		document.getElementById("wrapper").className = "smallFont";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFontIT"){
+		document.getElementById("wrapper").className = "smallFontIT";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFontNL"){
+		document.getElementById("wrapper").className = "smallFontNL";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "verySmallFont"){
+		document.getElementById("wrapper").className = "verySmallFont";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "verySmallFontDE"){
+		document.getElementById("wrapper").className = "verySmallFontDE"
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "verySmallFontDA"){
+		document.getElementById("wrapper").className = "verySmallFontDA";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFontNO"){
+		document.getElementById("wrapper").className = "smallFontNO";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFontSV"){
+		document.getElementById("wrapper").className = "smallFontSV";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFontFR"){
+		document.getElementById("wrapper").className = "smallFontFR";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFontRU"){
+		document.getElementById("wrapper").className = "smallFontRU";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "smallFontCH_FR"){
+		document.getElementById("wrapper").className = "smallFontCH_FR";
+	} else if (dynamicContent.Cisco__Sparks_Sheet1[0].FontSize == "verySmallFontFI"){
+		document.getElementById("wrapper").className = "verySmallFontFI";
+	} else {
+		document.getElementById("wrapper").className = "normalFont";
+	}
+
+	if (Enabler.isPageLoaded()) {
+    	onBannerView();
+    	
+  } else {
+    	Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, onBannerView());
+  }
+}
+
+
+function onBannerView() {	
+	if (Enabler.isVisible()) {
+    	Banner.animate();
+  	} else {
+    	Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, Banner.animate);
+  	}   
+}
+
+// global variabes
+var wrapper = El("wrapper");
+var stageWidth = El("stage").offsetWidth;
+var stageHeight = El("stage").offsetHeight;
+
+
+// optional extras / common scripts
+
+// jQuery type has/add/remove class selectors
+function hasClass(ele,cls) {
+	return !!ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+};
+function addClass(ele,cls) {
+	if (!hasClass(ele,cls)) ele.className += (ele.className==""?"":" ")+cls;
+};	
+function removeClass(ele,cls) {
+	if (hasClass(ele,cls)) {
+		var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+		ele.className=ele.className.replace(reg,' ');
+	}
+};
+
+
+//doubleclick exit handler
+function bgExitHandler(e) {
+  Enabler.exitOverride('Background Exit', dynamicContent.Cisco__Sparks_Sheet1[0].ExitURL.Url);
+}
+document.getElementById('bg-exit').addEventListener('click', bgExitHandler, false);
+
+var Banner = {
+	"loops": 0,
+	"width": El("stage").offsetWidth,
+	"height": El("stage").offsetHeight,
+	"processText": function(text){		
+		console.log(text);
+		if(text!=undefined){
+		var textArr = text.split(" -- ");
+		return textArr.join("<br/>");
+	} else return "";
+	},	
+	"animate": function(){
+			var copySet = dynamicContent.Cisco__Sparks_Sheet1[0];
+			El('copy1').innerHTML = "<span>"+Banner.processText(copySet.Copy1)+"</span>";
+			El('copy2').innerHTML = "<span>"+Banner.processText(copySet.Copy2)+"</span>";
+			El('copy3').innerHTML = "<span>"+Banner.processText(copySet.Copy3)+"</span>";
+			El('copy4').innerHTML = "<span>"+Banner.processText(copySet.Copy4)+"</span>";
+			El('copy5').innerHTML = "<span>"+Banner.processText(copySet.Copy5)+"</span>";
+			El('copy6').innerHTML = "<span>"+Banner.processText(copySet.Copy6)+"</span>";
+			El('cta').innerHTML = "<span>"+Banner.processText(copySet.CtaCopy)+"</span>";			
+			
+			
+			/*=============================================
+			=            Main animations go here          =
+			=============================================*/
+
+			var tl = new TimelineMax({repeat: Banner.loops });
+			var tween = tl.to("#image1", 0.7, {css:{opacity: "1"}, ease: Expo.easeInOut}, 0)
+						  .to("#copy1", 1, {css:{opacity: "1"}, ease: Expo.easeInOut}, 0.7)
+						  .to("#image1a", 0, {css:{opacity: "1"}, ease: Expo.easeInOut}, 1)
+						  .to("#copy1", 0.5, {css:{opacity: "0"}, ease: Expo.easeInOut}, 4)
+						  .to("#image1", 1, {css:{opacity: "0"}, ease: Expo.easeInOut}, 4.5)
+						  
+						  .to("#copy2", 0.5, {css:{opacity: "1"}, ease: Expo.easeInOut}, 6)
+		  				  .to("#copy2", 0.5, {css:{opacity: "0"}, ease: Expo.easeInOut}, 8)
+		  				  .to("#image1a", 1, {css:{opacity: "0"}, ease: Expo.easeInOut}, 8.5)
+		  				  .to("#stage", 0.5, {css:{backgroundColor: "#0e95d0"}, ease: Expo.easeInOut}, 8.5)
+						  .to("#copy3", 0.5, {css:{opacity: "1"}, ease: Expo.easeInOut}, 10)
+						  .to("#mask", 0.5, {css:{opacity: "1"}, ease: Expo.easeInOut}, 10)
+						  .to("#copy4", 0.5, {css:{opacity: "1"}, ease: Expo.easeInOut}, 10.2)
+						  
+						  .set("#spark", {className: "+=play"}, 11.5)
+						  .to("#mask", 1.8, {css:{width: "32%"}, ease: Expo.easeInOut}, 10.9)
+						  .to("#mask", 2, {css:{width: "0%"}, ease: Expo.easeInOut}, 11.9)  
+						  .to("#spark", 2.8, {css:{x: 110}, ease: Expo.easeInOut}, 11.6)
+
+						  .to("#copy3", 0.5, {css:{opacity: "0"}, ease: Expo.easeInOut}, 15)
+						  .to("#copy4", 0.5, {css:{opacity: "0"}, ease: Expo.easeInOut}, 15)
+						  
+						  .to("#image_end_frame", 1, {css:{opacity: "1"}, ease: Expo.easeInOut}, 15.5)
+						  .to("#logo", 1, {css:{opacity: "1"}, ease: Expo.easeInOut}, 15.5)
+
+						  .to("#copy5", 1, {css:{opacity: "1"}, ease: Expo.easeInOut}, 16.5)
+						  .to("#copy6", 1, {css:{opacity: "1"}, ease: Expo.easeInOut}, 16.5)
+						  
+						  .to("#cta", 0.5, {css:{opacity: "1"}, ease: Expo.easeInOut}, 18.5)  
+						  
+						  
+	    	//total time of banner
+			console.log(tl.totalDuration());
+		/*=====  End animation ======*/
+	}
+}
+
+
+
+}());

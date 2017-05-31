@@ -1,0 +1,11 @@
+#dropdown{list-style:none;font-weight:bold;position:relative;z-index:5;padding:2px;margin:15px;background:#D9E6E9;border:1px solid #666666;}
+#dropdown li{position:relative;text-align:center;}
+#dropdown a{display:block;padding:5px;color:#fff;background:#416b73;}
+#dropdown a:hover{color:#fff;background:#666666;text-decoration:underline;}
+#dropdown ul{background:#fff;list-style:none;padding:0;margin:0;position:absolute;left:-9999px;}
+#dropdown ul li{padding-top:1px;float:none;}
+#dropdown ul a{white-space:nowrap;}
+#dropdown li:hover ul{left:0px;overflow-y:scroll;overflow-x:hidden;}
+#dropdown li:hover a{background:#416b73;text-decoration:underline;}
+#dropdown li:hover ul a{text-decoration:none;}
+#dropdown li:hover ul li a:hover{background:#666666;}
