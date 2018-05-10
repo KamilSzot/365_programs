@@ -1,0 +1,9 @@
+<html>
+    <body>
+        <script>
+            fetch('/a').then(response => {
+                response.text().then(text => document.write(text));
+            });
+        </script>
+    </body>
+</html>
